@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JessicaKate Ogungbadero</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      color: #111;
+      background: #fff;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #eee;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      padding: 0 32px;
+      justify-content: space-between;
+    }
+    .nav-name {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: #111;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 13px; color: #777; text-decoration: none; transition: color 0.15s; }
+    .nav-links a:hover { color: #111; }
+
+    /* ── Layout ── */
+    .container { max-width: 800px; margin: 0 auto; padding: 0 32px; }
+    section { padding: 72px 0; border-bottom: 1px solid #f0f0f0; }
+    section:last-of-type { border-bottom: none; }
+
+    /* ── Hero ── */
+    #hero {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 56px;
+      align-items: center;
+      padding: 80px 0 80px;
+    }
+    .hero-text h1 {
+      font-size: 38px;
+      font-weight: 600;
+      letter-spacing: -0.035em;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+    .hero-title {
+      font-size: 15px;
+      color: #777;
+      font-weight: 400;
+      margin-bottom: 22px;
+    }
+    .hero-bio {
+      font-size: 14.5px;
+      color: #444;
+      line-height: 1.8;
+      max-width: 460px;
+      margin-bottom: 28px;
+    }
+    .hero-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .hero-links a {
+      font-size: 13px;
+      color: #111;
+      text-decoration: none;
+      border-bottom: 1px solid #111;
+      padding-bottom: 1px;
+      transition: opacity 0.15s;
+    }
+    .hero-links a:hover { opacity: 0.45; }
+    .hero-photo img {
+      width: 176px;
+      height: 176px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 10%;
+      display: block;
+    }
+
+    /* ── Section label ── */
+    .section-label {
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: #bbb;
+      margin-bottom: 44px;
+    }
+
+    /* ── Experience ── */
+    .job { margin-bottom: 52px; padding-bottom: 52px; border-bottom: 1px solid #f0f0f0; }
+    .job:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 2px;
+    }
+    .job-company { font-size: 15.5px; font-weight: 600; letter-spacing: -0.01em; }
+    .job-company .acq { font-weight: 400; color: #aaa; font-size: 12.5px; }
+    .job-location { font-size: 12px; color: #bbb; }
+    .role { margin-top: 18px; }
+    .role + .role { margin-top: 20px; padding-top: 20px; border-top: 1px solid #f7f7f7; }
+    .role-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .role-title { font-size: 13.5px; font-weight: 500; }
+    .role-dates { font-size: 11.5px; color: #bbb; white-space: nowrap; }
+    .role-desc { font-size: 13.5px; color: #555; line-height: 1.7; margin-bottom: 10px; }
+    .role-bullets { list-style: none; padding: 0; }
+    .role-bullets li {
+      font-size: 13.5px;
+      color: #555;
+      padding-left: 16px;
+      position: relative;
+      margin-bottom: 6px;
+      line-height: 1.65;
+    }
+    .role-bullets li::before { content: "–"; position: absolute; left: 0; color: #ccc; }
+
+    /* ── Education ── */
+    .edu-item { margin-bottom: 28px; }
+    .edu-item:last-child { margin-bottom: 0; }
+    .edu-school { font-size: 15px; font-weight: 600; }
+    .edu-detail { font-size: 13.5px; color: #555; margin-top: 3px; }
+    .edu-location { font-size: 12px; color: #bbb; margin-top: 2px; }
+
+    /* ── Skills ── */
+    .skills-grid { display: flex; flex-wrap: wrap; gap: 9px; }
+    .skill {
+      font-size: 12.5px;
+      color: #444;
+      background: #f6f6f6;
+      border-radius: 4px;
+      padding: 5px 13px;
+    }
+
+    /* ── Footer ── */
+    footer { padding: 52px 0; text-align: center; background: #fafafa; border-top: 1px solid #eee; }
+    .footer-name { font-size: 13px; font-weight: 500; color: #111; margin-bottom: 14px; }
+    .footer-links { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; }
+    .footer-links a { font-size: 13px; color: #666; text-decoration: none; }
+    .footer-links a:hover { color: #111; }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .container { padding: 0 20px; }
+      #hero { grid-template-columns: 1fr; gap: 28px; padding: 48px 0 60px; }
+      .hero-photo { order: -1; }
+      .hero-photo img { width: 112px; height: 112px; }
+      .hero-text h1 { font-size: 28px; }
+      section { padding: 52px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-name">JessicaKate Ogungbadero</a>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+
+  <!-- Hero -->
+  <section id="hero">
+    <div class="hero-text">
+      <h1>JessicaKate<br>Ogungbadero</h1>
+      <p class="hero-title">Product Leader &nbsp;·&nbsp; New York, NY</p>
+      <p class="hero-bio">15+ years building products people trust — from leading Reddit's Safety platform and ML/AI investments to shaping Facebook Groups and YouTube AdWords. I work at the intersection of product strategy, data science, and human-centered design.</p>
+      <div class="hero-links">
+        <a href="https://www.linkedin.com/in/jessicakate" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:jogungbadero@post.harvard.edu">Email</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="headshot.jpg" alt="JessicaKate Ogungbadero">
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience">
+    <p class="section-label">Experience</p>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-company">Reddit</span>
+        <span class="job-location">San Francisco, CA</span>
+      </div>
+      <div class="role">
+        <div class="role-header">
+          <span class="role-title">Director of Product &amp; Insights Data Science, Safety</span>
+          <span class="role-dates">Jul 2021 – Dec 2025</span>
+        </div>
+        <p class="role-desc">Strategic people leader overseeing Safety product development, consumer experience, ML/AI-powered platform moderation, and data insights &amp; transparency reporting.</p>
+        <ul class="role-bullets">
+          <li>Led seven teams on a mission to detect the bad, protect the good, and empower all users to feel safe on Reddit</li>
+          <li>Drove Safety &amp; Transparency reporting published to the Reddit community</li>
+        </ul>
+      </div>
+      <div class="role">
+        <div class="role-header">
+          <span class="role-title">Senior Group Product Manager</span>
+          <span class="role-dates">Jul 2020 – Jul 2021</span>
+        </div>
+        <ul class="role-bullets">
+          <li>Built a cohesive roadmap across Enforcement and Technology teams to improve moderation quality and expand safe features for moderators and users</li>
+        </ul>
+      </div>
+      <div class="role">
+        <div class="role-header">
+          <span class="role-title">Group Product Manager</span>
+          <span class="role-dates">Aug 2019 – Jul 2020</span>
+        </div>
+        <ul class="role-bullets">
+          <li>Founded Reddit's Safety Product Group, expanding focus into detection technology, consumer and community safety, and internal content moderation tools</li>
+        </ul>
+      </div>
+      <div class="role">
+        <div class="role-header">
+          <span class="role-title">Lead Product Manager</span>
+          <span class="role-dates">Feb 2018 – Jul 2019</span>
+        </div>
+        <ul class="role-bullets">
+          <li>Helmed Reddit's 2018 redesign from launch to landing</li>
+          <li>Led Reddit's foundational community growth efforts, defining the first internal active communities metrics</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-company">Meta</span>
+        <span class="job-location">Menlo Park, CA</span>
+      </div>
+      <div class="role">
+        <div class="role-header">
+          <span class="role-title">Consumer Strategy, Facebook</span>
+          <span class="role-dates">Jul 2016 – Feb 2018</span>
+        </div>
+        <p class="role-desc">Created Consumer Strategy role defining the intersection of product truth and human need for Internet.org, Meta's global connectivity initiative.</p>
+        <ul class="role-bullets">
+          <li>Led Mobile Financial Services opportunity assessment in the Philippines with UX research and data science</li>
+          <li>Determined incremental acquisition goals for off-platform Internet.org channels</li>
+          <li>Designed offline paid acquisition tracking framework for emerging markets</li>
+        </ul>
+      </div>
+      <div class="role">
+        <div class="role-header">
+          <span class="role-title">Product Marketing Manager, Groups &amp; Creative Labs</span>
+          <span class="role-dates">Feb 2014 – Jun 2016</span>
+        </div>
+        <ul class="role-bullets">
+          <li>Used behavioral data and qualitative research to identify high-opportunity verticals within Facebook Groups</li>
+          <li>Spoke at the 2016 F8 Developer Conference main stage on bridging product development with user empathy</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-company">Sosh <span class="acq">(Offline Labs, acquired by Postmates)</span></span>
+        <span class="job-location">San Francisco, CA</span>
+      </div>
+      <div class="role">
+        <div class="role-header">
+          <span class="role-title">Product Manager, Content</span>
+          <span class="role-dates">Aug 2012 – Jan 2014</span>
+        </div>
+        <ul class="role-bullets">
+          <li>Built new iOS app home experience, increasing recommendation carousel engagement 30%</li>
+          <li>Built scalable event ticketing and promoted event experience across desktop and mobile</li>
+          <li>Created neighborhood and demographic analysis framework for new market launches</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-company">Google, YouTube</span>
+        <span class="job-location">Mountain View, CA</span>
+      </div>
+      <div class="role">
+        <div class="role-header">
+          <span class="role-title">Product Manager, Monetization</span>
+          <span class="role-dates">Jun 2011 – Aug 2012</span>
+        </div>
+        <p class="role-desc">Led product development of long-tail growth features for AdWords for Video.</p>
+        <ul class="role-bullets">
+          <li>Created the YouTube Ad Creation Wizard — a native flow for YouTube users to create AdWords campaigns from their own content</li>
+          <li>Spec'd Video Creation Marketplace connecting creators to advertisers (patent awarded: EP2864954A4)</li>
+          <li>Built customer creation dashboard tracking AdWords for Video campaigns by referral source</li>
+        </ul>
+      </div>
+      <div class="role">
+        <div class="role-header">
+          <span class="role-title">Product Manager, Slide Autonomous Unit</span>
+          <span class="role-dates">Sep 2010 – Jun 2011</span>
+        </div>
+        <ul class="role-bullets">
+          <li>Worked on consumer applications including Photovine within the Slide autonomous unit post-acquisition</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-company">Slide, Inc. <span class="acq">(acquired by Google)</span></span>
+        <span class="job-location">San Francisco, CA</span>
+      </div>
+      <div class="role">
+        <div class="role-header">
+          <span class="role-title">Associate Product Manager</span>
+          <span class="role-dates">Apr 2010 – Sep 2010</span>
+        </div>
+        <ul class="role-bullets">
+          <li>Focused on retention and viral features for social games</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-company">Playdom, Inc. <span class="acq">(acquired by Disney Interactive Media)</span></span>
+        <span class="job-location">Mountain View, CA</span>
+      </div>
+      <div class="role">
+        <div class="role-header">
+          <span class="role-title">Associate Product Manager</span>
+          <span class="role-dates">Dec 2009 – Mar 2010</span>
+        </div>
+        <ul class="role-bullets">
+          <li>Worked with two game studios on product specifications, game iterations, and title releases</li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Education -->
+  <section id="education">
+    <p class="section-label">Education &amp; Recognition</p>
+    <div class="edu-item">
+      <div class="edu-school">Harvard University</div>
+      <div class="edu-detail">B.A. in Sociology, secondary field in Classical Studies &nbsp;·&nbsp; June 2009</div>
+      <div class="edu-location">Cambridge, MA</div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-school">American Swiss Foundation Young Leader</div>
+      <div class="edu-detail">November 2024 cohort &nbsp;·&nbsp; Alumni Committee member</div>
+      <div class="edu-location">Washington, DC</div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <p class="section-label">Skills</p>
+    <div class="skills-grid">
+      <span class="skill">SQL &amp; Data Mining</span>
+      <span class="skill">Product Strategy</span>
+      <span class="skill">ML/AI Products</span>
+      <span class="skill">Safety &amp; Trust</span>
+      <span class="skill">Data Science</span>
+      <span class="skill">Market Analysis</span>
+      <span class="skill">UX &amp; Wireframing</span>
+      <span class="skill">People Leadership</span>
+      <span class="skill">Transparency Reporting</span>
+      <span class="skill">Certified Scrum Master</span>
+    </div>
+  </section>
+
+</div>
+
+<!-- Footer / Contact -->
+<footer id="contact">
+  <div class="container">
+    <p class="footer-name">JessicaKate Ogungbadero</p>
+    <div class="footer-links">
+      <a href="mailto:jogungbadero@post.harvard.edu">jogungbadero@post.harvard.edu</a>
+      <a href="https://www.linkedin.com/in/jessicakate" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="tel:+16173040304">+1 617 304 0304</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
